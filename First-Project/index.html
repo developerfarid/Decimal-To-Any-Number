@@ -7,12 +7,11 @@
     <title>Decimal to Any Number</title>
 
     <style>
-        body{
-            height: 100vh;
-        }
+      body {
+        height: 100vh;
+      }
       * {
         box-sizing: border-box;
-     
       }
       section {
         position: relative;
@@ -23,36 +22,36 @@
         filter: blur(300px);
       }
       section .design:nth-child(1) {
-        width: 600px;
-        height: 600px;
+        width: 60%;
+        height: 60%;
         background-color: rgb(0, 0, 0);
         left: 30%;
         top: 30%;
       }
       section .design:nth-child(2) {
-        width: 700px;
-        height: 400px;
+        width: 70%;
+        height: 40%;
         background-color: rgb(255, 0, 0);
         left: 0%;
         top: 0%;
       }
       section .design:nth-child(3) {
-        width: 100px;
-        height: 100px;
+        width: 10%;
+        height: 10%;
         background-color: rgb(68, 0, 255);
         left: 70%;
         top: 20%;
       }
       section .design:nth-child(4) {
-        width: 500px;
-        height: 400px;
+        width: 50%;
+        height: 40%;
         background-color: rgb(0, 255, 128);
         right: 10%;
         bottom: 0%;
       }
       section .design:nth-child(5) {
-        width: 500px;
-        height: 400px;
+        width: 50%;
+        height: 40%;
         background-color: rgb(255, 208, 0);
         right: 40%;
         bottom: 4%;
@@ -82,19 +81,20 @@
         font-size: 20px;
         color: rgb(247, 247, 247);
         background: transparent;
-        
       }
       input[type="text"] {
         width: 100%;
         text-align: center;
         border-bottom: 1px solid rgb(255, 255, 255);
       }
-      input:focus, select:focus {
+      input:focus,
+      select:focus {
         outline: 0;
         background: rgba(53, 9, 248, 0.151);
         border: 1px solid rgb(255, 255, 255);
       }
-      button,select {
+      button,
+      select {
         cursor: pointer;
         padding: 15px 50px;
         background: rgba(0, 0, 0, 0.493);
@@ -104,14 +104,24 @@
         color: rgb(255, 255, 255);
         margin: 20px 0;
       }
-      h1,label {
+      h1,
+      label {
         color: white;
         font-size: 35px;
-        
       }
       #result {
         visibility: hidden;
         border-bottom: 1px solid rgb(255, 255, 255);
+        word-wrap: break-word;
+      }
+
+      @media (max-width: 500px) {
+        .box {
+          width: 100%;
+        }
+        h1 {
+          font-size: 18px;
+        }
       }
     </style>
   </head>
@@ -128,11 +138,17 @@
           <form action="#">
             <label for="framework">Select a type of Number. </label>
             <select id="framework">
+              <option value="">Select One First</option>
               <option value="binary">Binnary</option>
               <option value="hex">Hex</option>
               <option value="octal">Octal</option>
             </select>
-            <input type="text" name="" id="decimal" placeholder="Enter a Decimal Number" />
+            <input
+              type="text"
+              name=""
+              id="decimal"
+              placeholder="Enter a Decimal Number"
+            />
             <h1 id="result">Result</h1>
             <button id="convert">Convert</button>
           </form>
@@ -144,86 +160,36 @@
         .querySelector("#framework")
         .addEventListener("change", (e) => {
           let items = e.target.value;
-          
           if (items === "binary") {
-            document.querySelector("#replace").innerHTML="Decimal to Binary Convert"
-            const bainaryNumber = document.querySelector("#result");
-            const decimalToBinary = document.querySelector("#convert");
-
-            decimalToBinary.addEventListener("click", (ee) => {
-              ee.preventDefault();
-              const decimalNumber = document.querySelector("#decimal").value;
-              if (decimalNumber === "") {
-                alert("Enter a Number");
-              } else if (decimalNumber < 0) {
-                alert("Enter a Positive Number");
-              } else {
-                bainaryNumber.style.visibility = "visible";
-              }
-
-              let toNumber = Number(decimalNumber).toString(2);
-              bainaryNumber.innerText = toNumber;
-            });
-          }else if (items ==="hex"){
-            document.querySelector("#replace").innerHTML="Decimal to Hexadecimal Convert"
-            const bainaryNumber = document.querySelector("#result");
-            const decimalToBinary = document.querySelector("#convert");
-
-            decimalToBinary.addEventListener("click", (ee) => {
-              ee.preventDefault();
-              const decimalNumber = document.querySelector("#decimal").value;
-              if (decimalNumber === "") {
-                alert("Enter a Number");
-              } else if (decimalNumber < 0) {
-                alert("Enter a Positive Number");
-              } else {
-                bainaryNumber.style.visibility = "visible";
-              }
-
-              let toNumber = Number(decimalNumber).toString(16);
-              bainaryNumber.innerText = toNumber;
-            });
-          }else if (items==="octal"){
-            document.querySelector("#replace").innerHTML="Decimal to Octal Convert"
-            const bainaryNumber = document.querySelector("#result");
-            const decimalToBinary = document.querySelector("#convert");
-
-            decimalToBinary.addEventListener("click", (ee) => {
-              ee.preventDefault();
-              const decimalNumber = document.querySelector("#decimal").value;
-              if (decimalNumber === "") {
-                alert("Enter a Number");
-              } else if (decimalNumber < 0) {
-                alert("Enter a Positive Number");
-              } else {
-                bainaryNumber.style.visibility = "visible";
-              }
-
-              let toNumber = Number(decimalNumber).toString(8);
-              bainaryNumber.innerText = toNumber;
-            });
+            myFun(2, "Binnary");
+          } else if (items === "octal") {
+            myFun(8, "Octal");
+          } else if (items === "hex") {
+            myFun(16, "Hexadecimal");
           }
-
         });
 
-       const bainaryNumber = document.querySelector("#result");
-       const decimalToBinary = document.querySelector("#convert");
+      function myFun(val = 2, name = "Binary") {
+        document.querySelector("#replace").innerHTML =
+          "Decimal to " + name + " Convert";
+        const bainaryNumber = document.querySelector("#result");
+        const decimalToBinary = document.querySelector("#convert");
 
-      decimalToBinary.addEventListener("click", (e)=>{
-           e.preventDefault()
-           const decimalNumber = document.querySelector("#decimal").value;
-           if (decimalNumber === "") {
-               alert("Enter a Number")
-           } else if (decimalNumber < 0){
-               alert("Enter a Positive Number")
-           }else{
-               bainaryNumber.style.visibility= "visible";
-           }
+        decimalToBinary.addEventListener("click", (e) => {
+          e.preventDefault();
+          const decimalNumber = document.querySelector("#decimal").value;
+          if (decimalNumber === "") {
+            alert("Enter a Number");
+          } else if (decimalNumber < 0) {
+            alert("Enter a Positive Number");
+          } else {
+            bainaryNumber.style.visibility = "visible";
+          }
 
-           let toNumber = Number(decimalNumber).toString(2)
-           bainaryNumber.innerText= toNumber
-
-       })
+          let toNumber = Number(decimalNumber).toString(val);
+          bainaryNumber.innerText = toNumber;
+        });
+      }
     </script>
   </body>
 </html>
