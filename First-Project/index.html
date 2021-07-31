@@ -1,195 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Decimal to Any Number</title>
 
-    <style>
-      body {
-        height: 100vh;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      section {
-        position: relative;
-      }
-      .design {
-        position: absolute;
-        content: "";
-        filter: blur(300px);
-      }
-      section .design:nth-child(1) {
-        width: 60%;
-        height: 60%;
-        background-color: rgb(0, 0, 0);
-        left: 30%;
-        top: 30%;
-      }
-      section .design:nth-child(2) {
-        width: 70%;
-        height: 40%;
-        background-color: rgb(255, 0, 0);
-        left: 0%;
-        top: 0%;
-      }
-      section .design:nth-child(3) {
-        width: 10%;
-        height: 10%;
-        background-color: rgb(68, 0, 255);
-        left: 70%;
-        top: 20%;
-      }
-      section .design:nth-child(4) {
-        width: 50%;
-        height: 40%;
-        background-color: rgb(0, 255, 128);
-        right: 10%;
-        bottom: 0%;
-      }
-      section .design:nth-child(5) {
-        width: 50%;
-        height: 40%;
-        background-color: rgb(255, 208, 0);
-        right: 40%;
-        bottom: 4%;
-      }
-      section .container {
-        max-width: 1140px;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      .box {
-        max-width: 600px;
-        width: 100%;
-        box-shadow: 6px -8px 50px rgb(182, 182, 182),
-          -6px 8px 50px rgb(182, 182, 182);
-        border-radius: 25px;
-        padding: 25px 35px;
-        text-align: center;
-        z-index: 1;
-      }
-      input,
-      button {
-        padding: 10px 20px;
-        border: none;
-        font-size: 20px;
-        color: rgb(247, 247, 247);
-        background: transparent;
-      }
-      input[type="text"] {
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgb(255, 255, 255);
-      }
-      input:focus,
-      select:focus {
-        outline: 0;
-        background: rgba(53, 9, 248, 0.151);
-        border: 1px solid rgb(255, 255, 255);
-      }
-      button,
-      select {
-        cursor: pointer;
-        padding: 15px 50px;
-        background: rgba(0, 0, 0, 0.493);
-        border-radius: 25px;
-        box-shadow: 5px 7px 25px rgb(197, 186, 186);
-        font-size: 20px;
-        color: rgb(255, 255, 255);
-        margin: 20px 0;
-      }
-      h1,
-      label {
-        color: white;
-        font-size: 35px;
-      }
-      #result {
-        visibility: hidden;
-        border-bottom: 1px solid rgb(255, 255, 255);
-        word-wrap: break-word;
-      }
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Decimal to Any Number</title>
+	<link rel="stylesheet" href="style.css">
+</head>
 
-      @media (max-width: 500px) {
-        .box {
-          width: 100%;
-        }
-        h1 {
-          font-size: 18px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <section>
-      <div class="design"></div>
-      <div class="design"></div>
-      <div class="design"></div>
-      <div class="design"></div>
-      <div class="design"></div>
-      <div class="container">
-        <div class="box">
-          <h1 id="replace">Decimal to Banary Convert</h1>
-          <form action="#">
-            <label for="framework">Select a type of Number. </label>
-            <select id="framework">
-              <option value="">Select One First</option>
-              <option value="binary">Binnary</option>
-              <option value="hex">Hex</option>
-              <option value="octal">Octal</option>
-            </select>
-            <input
-              type="text"
-              name=""
-              id="decimal"
-              placeholder="Enter a Decimal Number"
-            />
-            <h1 id="result">Result</h1>
-            <button id="convert">Convert</button>
-          </form>
-        </div>
-      </div>
-    </section>
-    <script>
-      let select = document
-        .querySelector("#framework")
-        .addEventListener("change", (e) => {
-          let items = e.target.value;
-          if (items === "binary") {
-            myFun(2, "Binnary");
-          } else if (items === "octal") {
-            myFun(8, "Octal");
-          } else if (items === "hex") {
-            myFun(16, "Hexadecimal");
-          }
-        });
+<body>
+	<section>
+		<div class="design"></div>
+		<div class="design"></div>
+		<div class="design"></div>
+		<div class="design"></div>
+		<div class="design"></div>
+		<div class="container">
+			<div class="box">
+				<h1 id="replace">Decimal to Banary Convert</h1>
+				<form action="#">
+					<label for="framework">Select a type of Number. </label>
+					<select id="framework">
+						<option value="">Select One First</option>
+						<option value="binary">Binnary</option>
+						<option value="hex">Hex</option>
+						<option value="octal">Octal</option>
+					</select>
+					<input type="text" id="decimal" placeholder="Enter a Decimal Number" />
+					<h1 id="result">Result</h1>
+					<button id="convert">Convert</button>
+				</form>
+			</div>
+			<div class="clock">
+				<h1>JavaScript Clock</h1>
+				<div class="clock-box">
+					<h1 class="time"></h1>
+					<h2>See you not for mind</h2> </div>
+			</div>
+			<div class="hex-color">
+				<button class="btn-color">Click me to Convert a Hex a Color</button> <span class="color">#fffff</span> </div>
+			<div class="copy-past-cut">
+				<h1>Try Copy Cut Paste</h1>
+				<input type="text" value="I Love JavaScript" id="inputText">
+				<button class="btn-text">Copy</button>
+				<button class="btn-cut">Cut</button>
+			</div>
+			<div class="damy-text">
+				<h1>Dummy Text Generator</h1>
+				<form id="text-dammy" action="">
+					<label for="pra">Pragraph Number</label>
+					<input type="number" id="pra-number" placeholder="Enter a Number 1 to 15">
+					<button class="btn-dammy">Do This</button>
+				</form>
+			</div>
+			<div class="dammy-text-result">
+				<p>Result Here</p>
+			</div>
+			<div class="tip-container">
+				<h1>Tip Calculortar</h1>
+				<form action="" id="tip-form">
+					<input type="number" name="" id="tip-value" placeholder="Product Price">
+					<label for="" class="dis">
+						<input type="range" name="" value="0" id="tip-percent"><span id="quality">Quanty</span> </label>
+					<h3>Use this Copun for 20% free : 20FREE   </h3>
+					<label for="copon">
+						<input type="text" placeholder="Type here Copon" id="copon">
+						<button id=try> Try</button>
+					</label>
+					<div class="result-hide">
+						<h1 id="tip-result"></h1>
+						<h1 id="total-result"></h1> </div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<script src="script.js"></script>
+</body>
 
-      function myFun(val = 2, name = "Binary") {
-        document.querySelector("#replace").innerHTML =
-          "Decimal to " + name + " Convert";
-        const bainaryNumber = document.querySelector("#result");
-        const decimalToBinary = document.querySelector("#convert");
-
-        decimalToBinary.addEventListener("click", (e) => {
-          e.preventDefault();
-          const decimalNumber = document.querySelector("#decimal").value;
-          if (decimalNumber === "") {
-            alert("Enter a Number");
-          } else if (decimalNumber < 0) {
-            alert("Enter a Positive Number");
-          } else {
-            bainaryNumber.style.visibility = "visible";
-          }
-
-          let toNumber = Number(decimalNumber).toString(val);
-          bainaryNumber.innerText = toNumber;
-        });
-      }
-    </script>
-  </body>
 </html>
