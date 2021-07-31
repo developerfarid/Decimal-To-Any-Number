@@ -101,7 +101,6 @@ form.addEventListener("submit", (e) => {
 			let final = sliceArray.map((element) => {
 				return `<p>${element}</p>`
 			}).join("")
-			console.log(final);
 			dammyResult.innerHTML = final
 		}
 	})
@@ -109,7 +108,6 @@ form.addEventListener("submit", (e) => {
 document.querySelector("#tip-form").addEventListener("change", () => {
 	let valueTip = document.querySelector("#tip-value").value
 	let ValueTip = Number(valueTip)
-	console.log(ValueTip);
 	let tipValue = Math.ceil(document.querySelector("#tip-percent").value / 10)
 	let tipPer = document.querySelector("#quality");
 	tipPer.innerHTML = `${tipValue}Quanty`
@@ -117,19 +115,16 @@ document.querySelector("#tip-form").addEventListener("change", () => {
 	let productFirstPrice = (ValueTip * tipValue)
 	console.log(productFirstPrice);
 	let vat = (productFirstPrice * 5) / 100
-	console.log(vat);
 	document.querySelector("#tip-result").innerHTML = `Total Price Without vat ${productFirstPrice.toFixed(2)}TK`
 	document.querySelector("#total-result").innerHTML = `Total Price With Vat ${(productFirstPrice + vat).toFixed(2)}TK`
 	document.querySelector("#try").addEventListener("click", (e) => {
 		e.preventDefault()
 		let coopon = document.querySelector("#copon").value
-		console.log(coopon);
 		if(coopon === "20FREE") {
 			productFirstPrice = (productFirstPrice * 80) / 100
 			let newvat = vat * 80 / 100
-			console.log(newvat);
-			document.querySelector("#tip-result").innerHTML = `Total Price With copon  ${productFirstPrice.toFixed(2)}TK`
-			document.querySelector("#total-result").innerHTML = `Total Price With copon and vat Vat ${(productFirstPrice + newvat).toFixed(2)}TK`
+			document.querySelector("#tip-result").innerHTML = `Total Price With Coupon  ${productFirstPrice.toFixed(2)}TK`
+			document.querySelector("#total-result").innerHTML = `Total Price With Coupon and vat Vat ${(productFirstPrice + newvat).toFixed(2)}TK`
 		}
 	})
 })
